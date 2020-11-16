@@ -30,12 +30,12 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       env:
-        LIB: lib64
+        LIB: lib32
       with:
         languages: ${{ matrix.language }}
 
     - run: |
-       CXX=clang meson setup codeql
+       meson setup codeql
        ninja -C codeql -v
        
     - name: Perform CodeQL Analysis
